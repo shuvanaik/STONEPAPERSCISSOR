@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Records</title>  
+<link href="animate/animate.min.css" rel="stylesheet">
+</head>
+<body>
+<style>
+    body{
+        padding: 0;
+        margin: 0;
+        background:url(cartoon-rock-paper-scissors-vector-characters.webp);
+            justify-content: center;
+            align-items: center;
+        background-size: cover;
+        font-family: consolas;
+        transition: 2.0s;
+    }
+    .mmenu{
+        width:550px;
+        border: 3px solid rgba(0,0,0,0.5);
+        border-radius: 6px;
+        background: rgba(0,0,0,0.5);
+        color: gold;
+        top: 58%;
+        left:50%;
+        position: absolute;
+        transform: translate(-50%,-50%);
+        box-sizing: border-box;
+        padding: 30px 30px;
+    }
+    .heading{
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        border-radius: 50%;
+        top: -50px;
+        left: calc(50% - 50px);
+        
+    }
+    h1{
+        margin-bottom: 24px;
+        padding: 0 0 20px;
+        text-align: center;
+        font-size: 25px;
+    }
+        .btnn button{
+            background-color: #FF8C00;
+            border-color: #FF8C00;
+            color: #000;
+             border-radius: 7px;
+            transition: 0.2s;
+        }
+        .btnn button:hover{
+            background-color: #00FA9A;
+            color: #fff;
+            border-color: #00FA9A;
+            box-shadow: 3px 3px 12px 7px rgb(0,250,154),3px 3px 16px 7px rgb(0,250,154),3px 3px 20px 7px rgb(0,250,154);
+            border-radius: 0px;
+        }
+</style>
+    <a onmousedown="sound2.play()" href="menu.html" title="main menu"><img src="back-button-icon-2.png" id="back" style="position: fixed;left:5px;top: 28vh; height: 50px;width: 50px;"></a>
+    <img src="unmute.png" id="mute" style="position: fixed;left:5px;top: 40vh;height: 45px;width: 45px;cursor: pointer;">
+    <h2 class="animated fadeInUp" style="margin-bottom: 20px; color: #000;justify-content: center; text-align: center; font-size: 38px;">Records</h2>
+    <div class="mmenu animated zoomIn">
+        <h1>Here is the record of your last game</h1>
+        <div style="display: inline-flex;width: 100%;">
+        <div id="hero" style="width: 50%;display: block;">
+            <b style="font-size: 1.1em;"><u>Dispute</u></b>
+            <p>&#35;</p>
+        </div>
+        <div id="rohe" style="width:50%;display: block;">
+            <b style="font-size: 1.1em;"><u>Winner</u></b>
+            <p>&#35;</p>
+        </div>
+        </div>
+    </div> 
+    <div class="btnn animated fadeInUp" style="animation-delay: 1s;width: 100%;position: absolute;bottom: 10vh;" align="center"><a onmousedown="sound2.play()" href="single.html"><button type="button" size="80px" class="btn2" style=" padding: 8px; "><b style="font-weight: 700;">Play Again</b></button></a></div>
+<script>
+                 var sound1=new Audio();
+            sound1.src="soundscape.mp3";
+            var sound2=new Audio();
+            sound2.src="audio/mouse.mp3";
+       var flag=1;
+       setInterval(gamex,500) ;  
+function gamex()
+{
+     var n=document.getElementById("mute");
+    if(flag==1)
+   {
+       n.onclick=function(){n.src="1310903-200.png";flag=0;sound2.play();sound1.play();}
+   }
+    if(flag==0)
+   {
+      n.onclick=function(){n.src="unmute.png";flag=1;sound2.play();sound1.pause();}
+   }
+}
+    var id1="";var w="";
+   window.addEventListener('load',function(){
+            if(localStorage.id1)
+            id1=localStorage.id1;
+            if(localStorage.w)
+            w=localStorage.w;
+            var p=document.getElementsByTagName("p");
+            var c=document.getElementsByTagName("p").length-2;
+            if(!(p[c]==id1))
+                {
+                    var p1=p[0].cloneNode(true);
+                    var p2=p[1].cloneNode(true);
+                    p1.innerHTML=id1;
+                    p2.innerHTML=w;
+                    document.getElementById("hero").appendChild(p1);
+                    document.getElementById("rohe").appendChild(p2);}
+   });
+</script>
+</body>
+</html>

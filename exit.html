@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Exit</title>  
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="vendor/aos/aos.css" rel="stylesheet">
+<link href="animate/animate.min.css" rel="stylesheet">
+</head>
+<body>
+<style>
+    @font-face{
+    src: url(font/Modak.ttf);
+    font-family:lem;
+}
+        #prel
+    {
+        background: url(RegalAssuredGossamerwingedbutterfly-size_restricted.gif);
+        height:100vh;
+    }
+    body{
+        padding: 0;
+        margin: 0;
+   background: -webkit-linear-gradient( left,#8B0000, #FA8072); 
+    background: -o-linear-gradient(right,#8B0000, #FA8072); 
+    background: -moz-linear-gradient(left,#8B0000, #FA8072); 
+    background: linear-gradient(right,#8B0000, #FA8072);
+            justify-content: center;
+            align-items: center;
+        font-family: lem;
+        transition: 2.0s;
+    }
+    .mmenu{
+        width:300px;
+        height:340px;
+        border-radius: 6px;
+        color: #000;
+        top: 58%;
+        left:50%;
+        position: absolute;
+        transform: translate(-50%,-50%);
+        box-sizing: border-box;
+        padding: 70px 30px;
+    }
+    .heading{
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        border-radius: 50%;
+        top: -50px;
+        left: calc(50% - 50px);
+        
+    }
+    h1{
+        margin: 0;
+        padding: 0 0 20px;
+        text-align: center;
+        font-size: 25px;
+    }
+    .mmenu li
+    {
+        margin: 0;
+        padding: 14px;
+        font-weight: 600;
+    }
+    .mmenu a
+    {
+        color: gold;
+    }
+     .mmenu li:hover a
+    {
+        color: black;
+    }
+    .mmenu li:hover
+    {
+        background: cyan;
+        border: 1px solid cyan;
+        border-radius: 2px;
+        margin: 0;
+        padding: 14px;
+        font-weight: 600;
+    }
+    
+    ul li ul li
+    {
+        display: none;
+    }
+    ul li:hover ul li
+    {
+        display: block;
+    }
+    h2
+    {
+        margin-bottom: 40px; color: #000;justify-content: center; text-align: center; font-size: 38px;animation-duration: 3s;margin-top: 30px;
+    }
+</style>
+    
+    <div class="container">
+        <div class="row">
+            <br><br>
+    <h2 class="animated fadeInUp" >Thanks for playing....Visit again</h2>
+    <div class="mmenu animated zoomIn">
+   <img class="img-fluid" src="source.gif" style="border-radius: 20px;        top: 58%;
+        left:50%;
+        position: absolute;
+        transform: translate(-50%,-50%);max-width: 90vw;"> 
+    </div> 
+        </div><div class="animated fadeInLeft">
+    <a onmousedown="sound2.play()" href="menu.html" title="main menu"><img src="back-button-icon-2.png" id="back" style="position: fixed;left:5px;top 30vh; height: 50px;width: 50px;"></a>
+        <img src="unmute.png" id="mute" style="position: fixed;left:5px;top: 40vh;height: 45px;width: 45px;cursor: pointer;"></div></div>
+    <script>
+        var sound1=new Audio();           
+        sound1.src="soundscape.mp3";
+            var sound2=new Audio();
+            sound2.src="audio/mouse.mp3";
+    var flag=1;
+       setInterval(gamex,500) ;  
+function gamex()
+{
+     var n=document.getElementById("mute");
+    if(flag==1)
+   {
+       n.onclick=function(){n.src="1310903-200.png";flag=0;flag=0;sound2.play();sound1.play();}
+   }
+    if(flag==0)
+   {
+      n.onclick=function(){n.src="unmute.png";flag=1;flag=0;sound2.play();sound1.pause();}
+   }
+}
+    </script>
+</body>
+</html>

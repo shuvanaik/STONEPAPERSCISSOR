@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Main Menu</title>  
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+<link href="animate/animate.min.css" rel="stylesheet">
+</head>
+<body>
+<style>
+     @font-face{
+    src: url(font/Wallpoet.ttf);
+            font-family:tres;}
+    @font-face{
+            src: url(font/FrederickatheGreat.ttf);
+            font-family:uno;
+    }
+    @font-face{
+         src: url(font/Frij.ttf);
+            font-family:dos;
+    }
+    body{
+        padding: 0;
+        margin: 0;
+        background:url(cool-backgrounds.jpeg);
+            justify-content: center;
+            align-items: center;
+        background-size: cover;
+        font-family: consolas;
+        transition: 2.0s;
+    }
+    .mmenu{
+        width:300px;
+        height:340px;
+        border: 3px solid #000;
+        border-radius: 6px;
+        background: #000;
+        color: #ff0000;
+        top: 58%;
+        left:50%;
+        position: absolute;
+        transform: translate(-50%,-50%);
+        box-sizing: border-box;
+        padding: 70px 30px;
+    }
+    .heading{
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        border-radius: 50%;
+        top: -50px;
+        left: calc(50% - 50px);
+        
+    }
+    h1{
+        margin: 0;
+        padding: 0 0 20px;
+        text-align: center;
+        font-size: 25px;
+    }
+    .mmenu li
+    {
+        margin: 0;
+        padding: 14px;
+        font-weight: 600;
+    }
+    .mmenu a
+    {
+        color: gold;
+    }
+     .mmenu li:hover a
+    {
+        color: black;
+    }
+    .mmenu li:hover
+    {
+        background: cyan;
+        border: 1px solid cyan;
+        border-radius: 2px;
+        margin: 0;
+        padding: 14px;
+        font-weight: 600;
+    }
+    
+    ul li ul li
+    {
+        display: none;
+    }
+    ul li:hover ul li
+    {
+        display: block;
+    }
+    #prel
+    {
+        background: url(RegalAssuredGossamerwingedbutterfly-size_restricted.gif);
+        height:100vh;
+    }
+    #front
+    {
+        display: none;
+    }
+    h2
+    {
+        font-size: 38px;
+    }
+    @media screen and (max-width:600px)
+    {
+        h2
+        {
+            font-size: 21px;
+        }
+    }
+</style>
+    <div id="prel">
+    
+</div>
+    <div class="container" id="front" style="max-width: 95vw;">
+        <div class="row">
+            
+            <h2 style="margin-bottom: 20px; color: #fff;justify-content: center; text-align: center;font-family: modak;font-weight: 100;">
+                <div style="display: inline-flex;">
+                    <div class="animated fadeInDown" style="animation-duration: 1s;font-family: dos;animation-delay: 1s;">Rock&nbsp;&nbsp;&nbsp;</div>
+                    <div class="animated fadeInDown" style="font-family: uno; animation-duration: 1s;animation-delay: 2s;">Paper&nbsp;&nbsp;&nbsp;</div>
+                    <div class="animated fadeInDown" style="animation-duration: 1s;animation-delay: 3s;font-family: tres;">Scissors&nbsp;</div></div>
+            </h2>
+    <div class="mmenu animated zoomIn" id="xyz">
+   <img src="images.png" class="heading" style="border: 2px solid #ff0000;"> 
+        <h1>Main Menu</h1>
+        <ul>
+           <div class="new"><li><a onmousedown="sound2.play()" href="single.html" style="cursor: pointer; color: gold;" onclick="sound2.play();">Play</a>
+          </li></div>
+            <li><a onmousedown="sound2.play()" href="Records.html" style="cursor: pointer;">Records</a></li>
+            <li><a onmousedown="sound2.play()" href="Instructions.html" style="cursor: pointer;">Instructions</a></li>
+            <li><a id="li" onclick="sound2.play();" href="#">Exit</a></li>
+        </ul>
+    </div> 
+        </div><div class="animated fadeInLeft">
+    <a onmousedown="sound2.play()" href="index.html" title="Home page"><img src="back-button-icon-2.png" id="back" style="position: fixed;left:5px;top: 10vh; height: 50px;width: 50px;"></a>
+    <img id="mute" src="unmute.png" style="position: fixed;left:5px;top: 25vh;height: 45px;width: 45px;cursor: pointer;">
+        </div></div>
+<script>
+     var sound1=new Audio();
+            sound1.src="soundscape.mp3";
+            var sound2=new Audio();
+            sound2.src="audio/mouse.mp3";
+    var prel=document.getElementById("prel");
+    var m=document.getElementById("front");
+    var sn=document.getElementById("xyz");
+        window.addEventListener('load',function(){
+                prel.style.display="none";m.style.display="block" ;
+            });
+    var flag=1;
+       setInterval(gamex,500) ;  
+function gamex()
+{
+     var n=document.getElementById("mute");
+    if(flag==1)
+   {
+       n.onclick=function(){n.src="1310903-200.png";flag=0;sound2.play();sound1.play();}
+   }
+    if(flag==0)
+   {
+      n.onclick=function(){n.src="unmute.png";flag=1;sound2.play();sound1.pause();}
+   }
+}
+   var a=document.getElementById("li");
+   a.addEventListener("click",ask);
+    function ask()
+    {
+        var c=confirm("Are you sure you want to Quit?");
+        if(c){window.location="exit.html";}
+    }
+</script>
+</body>
+</html>

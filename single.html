@@ -1,0 +1,332 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Play</title>
+    <script type="text/javascript" src="brython.js"></script>
+   <script type="text/javascript" src="brython_stdlib.js"></script>
+    <link href="animate/animate.min.css" rel="stylesheet">
+</head>
+<body onload="brython(1)">
+    <style>
+    @font-face{
+            src: url(font/Modak.ttf);
+            font-family:mod;
+    }
+    body
+{
+	margin: 0;
+	padding: 0;
+    font-family: consolas;
+    	background: url(rps.png);
+    background-size: cover;
+}
+.container
+{
+	width: 100%;
+	height: 100vh;
+	overflow: hidden;
+
+    background-size: cover;
+}
+.mixBlnd
+{
+	background-blend-mode: screen;
+}
+    #prel
+    {
+        background: url(RegalAssuredGossamerwingedbutterfly-size_restricted.gif);
+        height:100vh;
+    }
+    #front
+    {
+        display: none;
+    }
+            .btnn button{
+            background-color: #000;
+            border-color: #FF8C00;
+            color: #fff;
+             border-radius: 2px;
+            transition: 0.3s;
+        }
+        .btnn button:hover{
+            background-color: #00FA9A;
+            color: #fff;
+            border-color: #00FA9A;
+            box-shadow: 3px 3px 12px 7px rgb(0,250,154),3px 3px 16px 7px rgb(0,250,154),3px 3px 20px 7px rgb(0,250,154);
+            border-radius: 0px;
+        }
+        .record{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  padding: 0 20px;
+}
+
+.contact-form{
+  display: flex;
+  max-width: 550px;
+  margin: 0 auto;
+  background: rgba(0,0,0,0.8);
+  padding: 30px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.input-fields{
+  display: flex;
+  flex-direction: column;
+  margin-right: 4%;
+}
+
+.input-fields,
+.msg{
+  width: 48%;
+}
+
+.input-fields .input,
+.msg p{
+  margin: 10px 0;
+  background: transparent;
+  border: 0px;
+  border-bottom: 2px solid #c5ecfd;
+  padding: 10px;
+  color: #c5ecfd;
+  width: 100%;
+}
+
+.msg p{
+  height: 212px;
+}
+
+::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: #c5ecfd;
+}
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #c5ecfd;
+}
+:-ms-input-placeholder {
+  /* IE 10+ */
+  color: #c5ecfd;
+}
+
+.btn {
+    background: #39b7dd;
+    text-align: center;
+    padding: 15px;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+@media screen and (max-width: 600px){
+  .contact-form{
+    flex-direction: column;
+  }
+  .msg p{
+    height: 80px;
+  }
+  .input-fields,
+  .msg{
+    width: 100%;
+  }
+}
+    </style>
+        <div id="prel">
+    
+</div>
+    <div class="record" id="xx" style="display: none;">
+  <div class="contact-form">
+    <div class="input-fields"><form method="post" name="myForm" onsubmit="show()">
+      <input style="font-size: 0.8em;" id="id1" type="text" class="input" name="fname" placeholder="Dispute you want to resolve through the game" required>
+      <input type="text" class="input" placeholder="Name" >
+      <input id="id2" type="number" class="input" name="fname1" placeholder="Number of rounds" min="1" max="10" required >
+      <p style="color: #ddd;">GOOD LUCK</p>
+        <div class="btn" type="submit" onclick="show()">Start</div></form>
+    </div>
+    <div class="msg">
+      <p style="font-size: 1.4em;border-bottom: 0px solid #000;">Welcome to the Rock Paper Scissors game.Please fill this form to proceed.<br>State your dispute,e.g,&#45;If I lose I will start studying</p>
+      
+    </div>
+  </div>
+    </div>
+	<div class="container" id="front" style="max-width: 100vw;">
+        <h2 style="margin-bottom: 20px; color: #fff;justify-content: center; text-align: center; font-size: 38px;font-family: mod;font-weight: 100;">
+                <div style="display: inline-flex;color:#000;"><div class="animated fadeInDown" style="animation-duration: 1s;font-family: mod;animation-delay: 1s;">Rock&nbsp;&nbsp;&nbsp;</div><div class="animated fadeInDown" style="font-family: mod; animation-duration: 1s;animation-delay: 1s;">Paper&nbsp;&nbsp;&nbsp;</div><div class="animated fadeInDown" style="animation-duration: 1s;animation-delay: 1s;font-family: mod;">Scissor</div>&nbsp;</div>
+            </h2>
+        <div style="position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);max-width: 100vw;">
+            <div style="display: inline-flex">
+            <div class="animated bounce" style="animation-iteration-count: infinite; animation-delay: 1s;"><img id="img1" src="rock1.png"></div>
+                <div style="background-color: rgba(0,0,0,0.7);text-align: center;border-radius: 6px;color: red;font-family:poppins;padding: 15px;font-size: 1.7em;"><b style="margin-bottom: 15px;">Score Board</b><br>
+                    <b style="color: #ddd;"><u>Comp</u>&nbsp;&nbsp;&nbsp;&nbsp;<u>User</u></b><br><br>
+                    <div style="display: flex;">
+                    <div id="comp" style="font-size: 1.4em;color: #ddd;width:50%;">0</div>
+                    <div id="user" style="font-size: 1.4em;color: #ddd;width:50%;">0</div>
+                </div>
+             </div>
+            <div class="animated bounce" style="animation-iteration-count: infinite;animation-delay: 1s;"><img id="img2" src="rock2.png"></div>
+            </div><br>
+            <div class="btnn animated fadeInUp" style="animation-delay: 1s;margin-top: 30px; margin-bottom: 20px;position: absolute;left: 33%;">
+            <button onmousedown="f1()" type="button" id="b1" size="80px" class="btn2" style=" padding: 8px; "><b style="font-weight: 700;">Rock</b></button>
+            <button onmousedown="f2()" type="button" id="b2" size="80px" class="btn2" style=" padding: 8px; "><b style="font-weight: 700;">Paper</b></button>
+            <button onmousedown="f3()" type="button" id="b3" size="80px" class="btn2" style=" padding: 8px; "><b style="font-weight: 700;">Scissor</b></button>
+            <button type="button" onmousedown="process()" id="b4" size="80px" class="btn2" style=" padding: 8px; "><b style="font-weight: 700;">Play</b></button><br>     
+            </div>
+        </div>
+        <a onmousedown="sound2.play()" href="menu.html" title="Home page"><img src="back-button-icon-2.png" id="back" style="position: fixed;left:5px;top: 10vh; height: 50px;width: 50px;"></a>
+    <img onmousedown="s2()" src="unmute.png" id="mute" style="position: fixed;left:5px;top: 25vh;height: 45px;width: 45px;cursor: pointer;">
+    </div><div class="animated fadeInUp" style="animation-delay: 3s;">
+            <button id="bttn" onmousedown="f4()"  type="button" size="80px" class="btn2" style=" cursor: pointer;padding: 8px; margin-top: 20px; background-color: #FF8C00;position: absolute;left:48%;bottom: 5%;display: none;"><b style="font-weight: 700;">QUIT</b></button></div>
+    <span id="new" style="display: none;"></span>
+    <span id="old" style="display: none;">20</span>
+	<script>
+            var sound1=new Audio();
+            sound1.src="soundscape.mp3";
+            var sound2=new Audio();
+            sound2.src="audio/mouse.mp3";
+                    var id1="No entry";var id2=8;var flagu=0;
+            var prel=document.getElementById("prel");
+    var m=document.getElementById("front");
+        var xx=document.getElementById("xx");
+        window.addEventListener('load',function(){
+                prel.style.display="none";xx.style.display="block" ;sound1.play(); 
+            });
+        function show()
+        { 
+             
+            var x = document.forms["myForm"]["fname"].value;
+            var x1 = document.forms["myForm"]["fname1"].value;
+            sound2.play();
+            if (x=="")
+                {
+                    alert("Enter your Dispute :D");
+                    return false;
+                }
+            else if(x1=="")
+                {
+                  alert("Enter number of rounds!");
+                    return false;  
+                }
+            else{
+            alert("You response is recorded");
+            xx.style.display="none"
+            m.style.display="block";
+            document.getElementById("bttn").style.display="block";
+            if(document.getElementById("id2").value)
+            id2=parseInt(document.getElementById("id2").value);
+            if(document.getElementById("id1").value)
+            id1=document.getElementById("id1").value;
+        }
+        }
+        var flag=1;
+        var comp=document.getElementById("comp");
+        var user=document.getElementById("user");
+        var img1=document.getElementById("img1");
+        var img2=document.getElementById("img2");var c=0;
+    function process()
+    {
+         var w=""
+        sound2.play();
+        if(flagu==1){
+        c=c+1;
+        if(c==id2){
+        if(parseInt(comp.innerHTML)>parseInt(user.innerHTML))
+        {alert(id2+" Rounds completed\nYour dispute: "+id1+"\nYou lost");w="comp";  }
+        else if(parseInt(comp.innerHTML)<parseInt(user.innerHTML))
+          {alert(id2+" Rounds completed\nYour dispute: "+id1+"\nYou won");w="user";   }         
+        else 
+        {alert(id2+" Rounds completed\nYour dispute: "+id1+"\nIt is a draw");w="draw";}  
+        localStorage.setItem('id1',id1);
+        localStorage.setItem('w',w);
+        comp.innerHTML="0";
+        user.innerHTML="0";
+        window.location.href="Records.html";}}
+        else 
+        alert("First select an item");
+    }
+       setInterval(gamex,500) ;  
+function gamex()
+{
+     var n=document.getElementById("mute");
+    if(flag==1)
+   {
+       n.onclick=function(){n.src="1310903-200.png";flag=0;sound2.play();sound1.play();}
+   }
+    if(flag==0)
+   {
+      n.onclick=function(){n.src="unmute.png";flag=1;sound2.play();sound1.pause();}
+   }
+}
+    function f1()
+    {
+        sound2.play();
+        img2.src="rock2.png";
+        img1.src="rock1.png";
+        document.getElementById("new").innerHTML="1";
+        flagu=1;
+    }
+    function f2()
+    {
+        sound2.play();
+        img2.src="paper2.png";
+        img1.src="rock1.png";
+        document.getElementById("new").innerHTML="2";
+        flagu=1;
+    }
+    function f3()
+    {
+        sound2.play();
+        img2.src="scis1.png";
+        img1.src="rock1.png";
+        document.getElementById("new").innerHTML="3";
+        flagu=1;
+    }
+    function f4()
+    {   var w=""
+        sound2.play();
+        if(parseInt(comp.innerHTML)>parseInt(user.innerHTML))
+        {alert(id2+" Rounds completed\nYour dispute: "+id1+"\nYou lost");w="comp";  }
+        else if(parseInt(comp.innerHTML)<parseInt(user.innerHTML))
+          {alert(id2+" Rounds completed\nYour dispute: "+id1+"\nYou won");w="user";   }         
+        else 
+        {alert(id2+" Rounds completed\nYour dispute: "+id1+"\nIt is a draw");w="draw";}  
+        localStorage.setItem('id1',id1);
+        localStorage.setItem('w',w);
+        comp.innerHTML="0";
+        user.innerHTML="0";
+        window.location.href="Records.html";
+    }
+	</script>
+    <script type="text/python">
+from browser import document
+def echo1(ev):
+    z=random.randint(1,3)
+    if document["old"].text=="20":
+        print("You have not selected");
+    if z==1:
+        document["img1"].src="rock1.png"
+    elif z==2:
+        document["img1"].src="paper1.png"
+    else:
+        document["img1"].src="scis2.png"
+    data =int(document["new"].text)
+    if z==data:
+        print("draw")
+    elif z==1 and data==2:
+        document["user"].text=int(document["user"].text)+1    
+    elif z==3 and data==1:
+        document["user"].text=int(document["user"].text)+1  
+    elif z==2 and data==3:
+        document["user"].text=int(document["user"].text)+1  
+    else:
+        document["comp"].text=int(document["comp"].text)+1  
+import random
+document['b4'].bind('click', echo1)
+</script>
+</body>
+</html>
+ 

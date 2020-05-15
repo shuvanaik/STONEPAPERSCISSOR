@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Instructions</title>  
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="animate/animate.min.css" rel="stylesheet">
+</head>
+<body>
+<style>
+        @font-face{
+    src: url(font/Modak.ttf);
+            font-family:lem;}
+    body{
+        padding: 0;
+        margin: 0;
+           background: -webkit-linear-gradient( right,#FF69B4, #FFD700); 
+    background: -o-linear-gradient(45deg,#FF7F50, #FFD700); 
+    background: -moz-linear-gradient(45deg,#FF7F50, #FFD700); 
+    background: linear-gradient(right,#FF69B4, #FFD700);
+            justify-content: center;
+            align-items: center;
+        font-family: lem;
+        transition: 2.0s;
+    }
+    .mmenu{
+        width:300px;
+        height:340px;
+        
+        border-radius: 6px;
+        
+        color: #000;
+        top: 58%;
+        left:50%;
+        position: absolute;
+        transform: translate(-50%,-50%);
+        box-sizing: border-box;
+        padding: 70px 30px;
+    }
+    .heading{
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        border-radius: 50%;
+        top: -50px;
+        left: calc(50% - 50px);
+        
+    }
+    h1{
+        margin: 0;
+        padding: 0 0 20px;
+        text-align: center;
+        font-size: 25px;
+    }
+    .mmenu li
+    {
+        margin: 0;
+        padding: 14px;
+        font-weight: 600;
+    }
+    .mmenu a
+    {
+        color: gold;
+    }
+     .mmenu li:hover a
+    {
+        color: black;
+    }
+    .mmenu li:hover
+    {
+        background: cyan;
+        border: 1px solid cyan;
+        border-radius: 2px;
+        margin: 0;
+        padding: 14px;
+        font-weight: 600;
+    }
+    
+    ul li ul li
+    {
+        display: none;
+    }
+    ul li:hover ul li
+    {
+        display: block;
+    }
+        #prel
+    {
+        background: url(RegalAssuredGossamerwingedbutterfly-size_restricted.gif);
+        height:100vh;
+    }
+    #main
+    {
+        display: none;
+    }
+</style>
+    <div id="prel">
+    
+</div>
+    <div class="container" id="main">
+        <div class="row">
+            
+    <h2 class="animated fadeInUp" style="margin-bottom: 20px;margin-top: 30px; color: #000;justify-content: center; text-align: center; font-size: 38px;animation-duration: 3s;">Rock  Paper  Scissor</h2>
+    <div class="mmenu animated zoomIn"> 
+ <img id ="xy" class="img-fluid" src="una.png" style="border-radius: 20px;        top: 58%;
+        left:50%;
+        position: absolute;
+        transform: translate(-50%,-50%);height: 70vh;">
+    </div> 
+        </div>
+                <p id="xx" style="text-align: center;margin:10px;">If you want to know the history of this game</p><p id="yy" style="text-align: center;margin-top: -5px; cursor: pointer;z-index: 100;">Click here</p>
+            <a onmousedown="sound2.play()" href="menu.html" title="main menu"><img src="back-button-icon-2.png" id="back" style="position: fixed;left:5px;top 30vh; height: 50px;width: 50px;"></a>
+    <img src="unmute.png" id="mute" style="position: fixed;left:5px;top: 40vh;height: 45px;width: 45px;cursor: pointer;">
+</div>
+    <script>
+                 var sound1=new Audio();
+            sound1.src="soundscape.mp3";
+            var sound2=new Audio();
+            sound2.src="audio/mouse.mp3";
+    var prel=document.getElementById("prel");
+    var m=document.getElementById("main");
+        setTimeout(function(){
+        if(document.readyState==='complete')
+            {
+                prel.style.display="none";m.style.display="block";   
+            }
+        },1000);
+   setInterval(game,500)     
+function game()
+    {
+        var p=document.getElementById("xx");
+        var p2=document.getElementById("yy");
+        var e=document.getElementById("xy");
+        if(p2.innerHTML=='Click here'){
+            p2.onclick=function(){sound2.play();e.src="paper.jpg";p.innerHTML="";p2.innerHTML="Back";}
+        }
+        else{
+            p2.onclick=function(){sound2.play();e.src="una.png";p.innerHTML="If you want to know the history of this game";p2.innerHTML="Click here";}
+        }
+   }
+   var flag=1;
+       setInterval(gamex,500) ;  
+function gamex()
+{
+     var n=document.getElementById("mute");
+    if(flag==1)
+   {
+       n.onclick=function(){n.src="1310903-200.png";flag=0;sound2.play();sound1.play();}
+   }
+    if(flag==0)
+   {
+      n.onclick=function(){n.src="unmute.png";flag=1;sound2.play();sound1.pause();}
+   }
+}
+</script>
+</body>
+</html>
